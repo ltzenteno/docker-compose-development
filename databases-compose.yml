@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:9.5.16
+    volumes:
+      - "postgres-volume:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    volumes:
+      - "mongo-volume:/data/db"
+      - "mongo-volume:/data/configdb"
+    ports:
+      - "27017:27017"
+
+
+volumes:
+  postgres-volume:
+    driver: local
+  mongo-volume:
+    driver: local
